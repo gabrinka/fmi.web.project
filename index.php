@@ -4,7 +4,8 @@
     <head>
         <meta charset = "UTF-8">
         <title>Проект по Уеб технологии - Управление на график по етажи</title>
-        <meta name="author" content = "Антония Няголова, Яна Спасова">
+        <meta name="author" content = "Антония Няголова, Яна Спасова,Александър Георгиев, Габриела Петрова, Хюлия Мустафа">
+        <meta name="description" content = "Проект по Уеб технологии">
         <link rel = "stylesheet" href = "./css/style.css">
     </head>
     <body>
