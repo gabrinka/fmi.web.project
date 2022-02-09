@@ -7,6 +7,7 @@
 		$dbName = "fmifloor_v2";
 		$username = "root";
 		$password = "";
+		
 		// Create connection
 		$connection = new PDO("mysql:host=$dbhost;dbname=$dbName;port=$dbport", $username, $password,
 		[
@@ -56,6 +57,40 @@
 		$query = $connection->prepare($statement);
 		$query->execute();
 		$result = $query->fetchAll(PDO::FETCH_ASSOC);
+		return $result;
+	}
+
+	function getUser($connection, $userName) {
+		$sql = 'SELECT id FROM users WHERE username = ?';
+		$query = $connection->prepare($sql);
+		$query->execute(array($userName));
+
+		$result = false;
+		$result = $query->fetchAll(PDO::FETCH_ASSOC);
+
+		return $result;
+	}
+
+
+	function getUserCredentials($connection, $userName) {
+		$sql =  "SELECT id, password FROM users WHERE username = ?";
+		$query = $connection->prepare($sql);
+		$query->execute(array($userName));
+
+		$result = false;
+		$result = $query->fetchAll(PDO::FETCH_ASSOC);
+
+		return $result;
+	}
+
+	function insertUser($connection, $userName,$hashedPassword) {
+		$sql = 'INSERT INTO users (username, password) VALUES (?, ?)';
+		$query = $connection->prepare($sql);
+		$query->execute(array($userName,$hashedPassword));
+
+		$result = false;
+		$result = $query->fetchAll(PDO::FETCH_ASSOC);
+
 		return $result;
 	}
 
