@@ -72,6 +72,7 @@ include('rooms.php');
                 <div id="pop-up-room-img-side-text"></div>
             </div>
             <div id="saveFromRoom">Запази зала</div>
+            <!-- <div id="exitFromRoom">Затвори</div> -->
             <div id="x">X</div>
         </figure>
         <div id='formContainer' class='hidden'>
