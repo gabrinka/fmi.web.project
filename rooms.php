@@ -87,6 +87,9 @@
                   else if (roomType == '1') {
                       child.className = 'small-computer-room';
                   }
+                  else if (roomType == '4'){
+                      child.className = 'lecturer-room';
+                  }
               }
               div.appendChild(child);
           }
@@ -110,8 +113,15 @@
             curFloor[i].classList.add('taken-room');
           }
           else {
+          let roomType = roomTypes[room].type;
+           if(roomType=='4'){
+              curFloor[i].classList.remove('taken-room');
+              curFloor[i].classList.add('lecturer-room-color');
+           }
+           else{
             curFloor[i].classList.remove('taken-room');
             curFloor[i].classList.add('empty-room');
+           }
           }
       }
   }
@@ -188,6 +198,10 @@
       else if (elem.classList.contains('seminar-room')) {
           roomType = 'Семинарна зала';
           popUpRoomImg.style.backgroundImage = 'url("./img/seminar-room.png")';
+      }
+      else if (elem.classList.contains('lecturer-room')){
+        roomType = 'Преподавателска стая';
+           popUpRoomImg.style.backgroundImage = 'url("./img/lecturer.png")';
       }
 
       let whiteBoard = (roomObj.whiteBoard == 'д') ? 'Да' : 'Не';
@@ -331,6 +345,9 @@
 
       formContainer.classList.remove('hidden');
     });
+
+    // let exitFromRoom = document.getElementByID('exitFromRoom');
+    // exitFromRoom.addEventListener('click', closeCloseUp);
 
     let formContainer = document.getElementById('formContainer');
       let warning = document.createElement('div');

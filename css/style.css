@@ -272,6 +272,15 @@ button {
     line-height: 8vw;
 }
 
+.lecturer-room{
+    flex-direction: row;
+    width: 4vw;
+    height: 8vw;
+    border: black dashed 1px;
+    margin: 0.2%;
+    line-height: 8vw;
+}
+
 
 .small-computer-room, .seminar-room {
     flex-direction: row;
@@ -325,6 +334,11 @@ button {
 .empty-room {
     background-color: #2db334;
     box-shadow: 0 0 10px rgb(0, 83, 0), 0 0 5px green;
+}
+
+.lecturer-room-color{
+    background-color: orange;
+    box-shadow: 0 0 10px rgb(209, 108, 13), 0 0 5px green;
 }
 
 .taken-room {
@@ -479,7 +493,7 @@ input {
 }
 
 
-.small-computer-room:hover,.seminar-room:hover {
+.small-computer-room:hover,.seminar-room:hover,.lecturer-room:hover {
     width: 4.4vw;
     height: 8.4vw;
 }
