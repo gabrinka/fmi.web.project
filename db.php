@@ -6,7 +6,7 @@
 		$dbport = 3306;
 		$dbName = "fmifloor_v2";
 		$username = "root";
-		$password = "";
+		$password = "root";
 		
 		// Create connection
 		$connection = new PDO("mysql:host=$dbhost;dbname=$dbName;port=$dbport", $username, $password,
@@ -98,6 +98,19 @@
 		$result = false;
 	 	$query = $connection->prepare($statement);
 	 	$query->execute($data);
+	}
+
+	//12.02
+	function insertBuilding($connection,$building,$floors){
+		$sql = 'INSERT INTO buildings (building,floors) VALUE(?,?)';
+		$query = $connection->prepare($sql);
+		$query->execute(array($building,$floors));
+	}
+
+	function insertRoom($connection,$building,$room,$floorNumber,$type,$seatsCnt,$computers,$whiteBoard,$projector,$sector){
+		$sql = 'INSERT INTO rooms (building,room,floor,type,seatsCnt,computers,whiteBoard,projector,sector) VALUE(?,?,?,?,?,?,?,?,?)';
+		$query = $connection->prepare($sql);
+		$query->execute(array($building,$room,$floorNumber,$type,$seatsCnt,$computers,$whiteBoard,$projector,$sector));
 	}
 
 	?>

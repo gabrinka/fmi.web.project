@@ -1,5 +1,7 @@
 <?php
   include 'db.php';
+ // include 'add_building.php';
+  
 
   $connection = db_connect();
 
@@ -89,6 +91,7 @@
                   }
                   else if (roomType == '4'){
                       child.className = 'lecturer-room';
+                  
                   }
               }
               div.appendChild(child);
@@ -202,11 +205,15 @@
       else if (elem.classList.contains('lecturer-room')){
         roomType = 'Преподавателска стая';
            popUpRoomImg.style.backgroundImage = 'url("./img/lecturer.png")';
+           
       }
 
       let whiteBoard = (roomObj.whiteBoard == 'д') ? 'Да' : 'Не';
 
       title.innerHTML = `Зала ${elem.innerHTML}`;
+
+
+
 
       let hours =  document.getElementById('timeInput').value;
       let day = document.getElementById('dateInput').value;
@@ -329,6 +336,10 @@
 
       formContainer.classList.remove('hidden');
     });
+
+ 
+
+
 
     let saveFromRoom = document.getElementById('saveFromRoom');
     saveFromRoom.addEventListener('click', function (event) {
