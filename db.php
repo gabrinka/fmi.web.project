@@ -100,4 +100,17 @@
 	 	$query->execute($data);
 	}
 
+	//12.02
+	function insertBuilding($connection,$building,$floors){
+		$sql = 'INSERT INTO buildings (building,floors) VALUE(?,?)';
+		$query = $connection->prepare($sql);
+		$query->execute(array($building,$floors));
+	}
+
+	function insertRoom($connection,$building,$room,$floorNumber,$type,$seatsCnt,$computers,$whiteBoard,$projector,$sector){
+		$sql = 'INSERT INTO rooms (building,room,floor,type,seatsCnt,computers,whiteBoard,projector,sector) VALUE(?,?,?,?,?,?,?,?,?)';
+		$query = $connection->prepare($sql);
+		$query->execute(array($building,$room,$floorNumber,$type,$seatsCnt,$computers,$whiteBoard,$projector,$sector));
+	}
+
 	?>

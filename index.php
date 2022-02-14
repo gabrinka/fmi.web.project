@@ -6,7 +6,7 @@ session_start();
 if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
     header("location: login.php");
     exit;
-} 
+}
 include('rooms.php');
 ?>
 <!DOCTYPE html5>
@@ -61,6 +61,9 @@ include('rooms.php');
             <input id="timeInput" type="time" class="glowyBox">
             <div id="checkAvailability" class="coolButton selectedButton">Виж заетост</div>
             <div id="openForm" class="coolButton selectedButton">Запази зала</div>
+
+            <!-- adding building -->
+            <div id='saveBuilding' class = coolButton selectedButton "> Добави сграда</div>
         </nav>
         <figure id="map">
         </figure>
@@ -68,7 +71,7 @@ include('rooms.php');
         <figure id="pop-up-room" class="hidden">
             <div class="darker"></div>
             <div id="pop-up-room-img">
-                <div id="pop-up-room-img-title"></div>
+                <p id="pop-up-room-img-title"></p>
                 <div id="pop-up-room-img-side-text"></div>
             </div>
             <div id="saveFromRoom">Запази зала</div>
@@ -118,9 +121,13 @@ include('rooms.php');
                 </ul>
             </form>
         </div>
+        
     </main>
     <?php include('footer.php'); ?>
     <!--<script src = "./js/code.js"></script>-->
+    
+    <script src="js/index.js"></script>
+    
 </body>
 
 </html>
