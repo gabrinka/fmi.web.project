@@ -1,129 +1,127 @@
 body {
-    background-image: url("../img/background2.jpg");
-    background-position: bottom;
-    background-attachment: fixed;
-    background-size: cover;
-    text-align: center;
-    align-content: center;
+  background-image: url('../img/background2.jpg');
+  background-position: bottom;
+  background-attachment: fixed;
+  background-size: cover;
+  text-align: center;
+  align-content: center;
 }
 
-form {   
-    width: 40%;
-    margin: auto;
-    background-color: aliceblue;
-    border: 3px solid #f1f1f1;   
-    padding:5px;
-    
-}   
-input[type=text], input[type=password], select {   
-    width: 100%;   
-    margin: 8px 0;  
-    padding: 12px 20px;   
-    display: inline-block;   
-    border: 2px solid green;   
-    box-sizing: border-box; 
-    text-align: left;  
-}  
+form {
+  width: 40%;
+  margin: auto;
+  background-color: aliceblue;
+  border: 3px solid #f1f1f1;
+  padding: 5px;
+}
+input[type='text'],
+input[type='password'],
+select {
+  width: 100%;
+  margin: 8px 0;
+  padding: 12px 20px;
+  display: inline-block;
+  border: 2px solid green;
+  box-sizing: border-box;
+  text-align: left;
+}
 
-
-button:hover {   
-    opacity: 0.7;   
-} 
-button {   
-    background-color: #4CAF50;   
-    width: 100%;  
-     color: rgb(252, 249, 245);   
-     padding: 15px;   
-     margin: 10px 0px;   
-     border: none;   
-     cursor: pointer;   
-      }     
-
+button:hover {
+  opacity: 0.7;
+}
+button {
+  background-color: #4caf50;
+  width: 100%;
+  color: rgb(252, 249, 245);
+  padding: 15px;
+  margin: 10px 0px;
+  border: none;
+  cursor: pointer;
+}
 
 .topNavBar {
-    background: inherit;
-    display: inline-block;
-    width: 20%;
-    padding: 20px;
-    margin: 3% auto;
-    position: sticky;
-    box-shadow: 0 0 1rem 0 rgba(0, 0, 0, .2);
-    border-radius: 50%;
+  background: inherit;
+  display: inline-block;
+  width: 20%;
+  padding: 20px;
+  margin: 3% auto;
+  position: sticky;
+  box-shadow: 0 0 1rem 0 rgba(0, 0, 0, 0.2);
+  border-radius: 50%;
 }
 
 .topNavBar::before {
-    content: "";
-    position: absolute;
-    background: inherit;
-    z-index: -1;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    opacity: 0.7;
-    box-shadow: inset 0 0 2000px rgba(255, 255, 255, 0.692);
-    -webkit-backdrop-filter: blur(15px);
-    backdrop-filter: blur(15px);
-    border-radius: 50%;
+  content: '';
+  position: absolute;
+  background: inherit;
+  z-index: -1;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  opacity: 0.7;
+  box-shadow: inset 0 0 2000px rgba(255, 255, 255, 0.692);
+  -webkit-backdrop-filter: blur(15px);
+  backdrop-filter: blur(15px);
+  border-radius: 50%;
 }
 
-.topNavButton{
-    text-decoration: none;
-    margin: 0 10%;
-    font-size: 2vw;
-    color: white;
-    display: inline-block;
+.topNavButton {
+  text-decoration: none;
+  margin: 0 10%;
+  font-size: 2vw;
+  color: white;
+  display: inline-block;
 }
 
 .topNavButton:hover {
   cursor: pointer;
 }
 
-
 .selectedButton {
-    text-shadow: 0 0 15px mistyrose, 0 0 15px mistyrose, 0 0 15px mistyrose, 0 0 15px mistyrose;
+  text-shadow: 0 0 15px mistyrose, 0 0 15px mistyrose, 0 0 15px mistyrose,
+    0 0 15px mistyrose;
 }
 
 .sideNavBar {
-    width: 20%;
-    max-height: 22.5%;
-    border-radius: 25%;
-    z-index: 1;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    margin: 1% 2% 30% 4%;
-    padding: 1%;
-    position: absolute;
-    overflow:hidden;
-    background: inherit;
-    box-shadow: 0 0 1rem 0 rgba(0, 0, 0, .2);
-
+  width: 20%;
+  max-height: 22.5%;
+  border-radius: 25%;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: 1% 2% 30% 4%;
+  padding: 1%;
+  position: absolute;
+  overflow: hidden;
+  background: inherit;
+  box-shadow: 0 0 1rem 0 rgba(0, 0, 0, 0.2);
 }
 
 .sideNavBar::before {
-    content: "";
-    position: absolute;
-    background: inherit;
-    z-index: -1;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    opacity: 0.7;
-    box-shadow: inset 0 0 2000px rgba(255, 255, 255, 0.692);
-    -webkit-backdrop-filter: blur(15px);
-    backdrop-filter: blur(15px);
+  content: '';
+  position: absolute;
+  background: inherit;
+  z-index: -1;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  opacity: 0.7;
+  box-shadow: inset 0 0 2000px rgba(255, 255, 255, 0.692);
+  -webkit-backdrop-filter: blur(15px);
+  backdrop-filter: blur(15px);
 }
 
 .sideNavButton {
-    text-decoration: none;
-    display: inline-block;
-    margin: 1vh 2vw;
-    font-size: 1.5vw;
-    color: white;
-    display: inline-block;
+  text-decoration: none;
+  display: inline-block;
+  margin: 1vh 2vw;
+  font-size: 1.5vw;
+  color: white;
+  display: inline-block;
 }
 
 .sideNavButton:hover {
@@ -131,400 +129,431 @@ button {
 }
 
 #setTime {
-    width: 24%;
-    max-height: 22.5%;
-    border-radius: 25%;
-    z-index: 1;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    margin: 1% 2% 30% 72%;
-    padding: 1%;
-    position: absolute;
-    overflow:hidden;
-    background: inherit;
-    box-shadow: 0 0 1rem 0 rgba(0, 0, 0, .2);
-
+  width: 24%;
+  max-height: 22.5%;
+  border-radius: 25%;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: 1% 2% 30% 72%;
+  padding: 1%;
+  position: absolute;
+  overflow: hidden;
+  background: inherit;
+  box-shadow: 0 0 1rem 0 rgba(0, 0, 0, 0.2);
 }
 
 #setTime::before {
-    content: "";
-    position: absolute;
-    background: inherit;
-    z-index: -1;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    opacity: 0.7;
-    box-shadow: inset 0 0 2000px rgba(255, 255, 255, 0.692);
-    -webkit-backdrop-filter: blur(15px);
-    backdrop-filter: blur(15px);
+  content: '';
+  position: absolute;
+  background: inherit;
+  z-index: -1;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  opacity: 0.7;
+  box-shadow: inset 0 0 2000px rgba(255, 255, 255, 0.692);
+  -webkit-backdrop-filter: blur(15px);
+  backdrop-filter: blur(15px);
 }
 
 .coolLabel {
-    text-decoration: none;
-    display: block;
-    margin: 2% 8%;
-    font-size: 1.5vw;
-    color: white;
-    text-shadow: 0 0 15px mistyrose, 0 0 15px mistyrose, 0 0 15px mistyrose, 0 0 15px mistyrose;
+  text-decoration: none;
+  display: block;
+  margin: 2% 8%;
+  font-size: 1.5vw;
+  color: white;
+  text-shadow: 0 0 15px mistyrose, 0 0 15px mistyrose, 0 0 15px mistyrose,
+    0 0 15px mistyrose;
 }
 
 .coolButton {
-    margin: 1vh 1vw;
-    display: inline;
-    text-decoration: none;
-    font-size: 1.5vw;
-    color: white;
+  margin: 1vh 1vw;
+  display: inline;
+  text-decoration: none;
+  font-size: 1.5vw;
+  color: white;
 }
 
 #timeInput {
-    margin-bottom: 1.5vh;
+  margin-bottom: 1.5vh;
 }
 
 #logout {
-    display: block;
-    
-    margin: 2% 8%;
-    width: fit-content;
-    padding: 5px;
-    font-size: 1.5vw;
-    color: white;
-    text-shadow: 0 0 15px mistyrose, 0 0 15px mistyrose, 0 0 15px mistyrose, 0 0 15px mistyrose;
-    border: none;
-    box-shadow: 0 0 15px mistyrose, 0 0 15px mistyrose;
+  display: block;
+
+  margin: 2% 8%;
+  width: fit-content;
+  padding: 5px;
+  font-size: 1.5vw;
+  color: white;
+  text-shadow: 0 0 15px mistyrose, 0 0 15px mistyrose, 0 0 15px mistyrose,
+    0 0 15px mistyrose;
+  border: none;
+  box-shadow: 0 0 15px mistyrose, 0 0 15px mistyrose;
 }
 
-#logout-link:link, #logout-link:visited{
-    color: white;
-    text-decoration: none;
+#logout-link:link,
+#logout-link:visited {
+  color: white;
+  text-decoration: none;
 }
-
-
 
 .glowyBox {
-    border: none;
-    margin: 0 auto;
-    display: block;
-    box-shadow: 0 0 15px mistyrose, 0 0 15px mistyrose;
+  border: none;
+  margin: 0 auto;
+  display: block;
+  box-shadow: 0 0 15px mistyrose, 0 0 15px mistyrose;
 }
 
-.topNavButton:hover, .sideNavButton:hover, .coolButton:hover, #ok:hover, #logout:hover {
-    text-shadow: 0 0 15px rgb(109, 30, 69), 0 0 15px rgb(109, 30, 69), 0 0 15px rgb(109, 30, 69), 0 0 15px rgb(109, 30, 69);
-    cursor: pointer;
+.topNavButton:hover,
+.sideNavButton:hover,
+.coolButton:hover,
+#ok:hover,
+#logout:hover {
+  text-shadow: 0 0 15px rgb(109, 30, 69), 0 0 15px rgb(109, 30, 69),
+    0 0 15px rgb(109, 30, 69), 0 0 15px rgb(109, 30, 69);
+  cursor: pointer;
 }
 
 #map {
-    background-color: linen;
-    box-shadow: 0 0 25px gray;
-    border-radius: 25%;
-    overflow: auto;
-    position: absolute;
-    top: 30vh;
-    width: 90vw;
-    height: 65vh;
-    z-index: -1;
+  background-color: linen;
+  box-shadow: 0 0 25px gray;
+  border-radius: 25%;
+  overflow: auto;
+  position: absolute;
+  top: 30vh;
+  width: 90vw;
+  height: 65vh;
+  z-index: -1;
 }
 
 .rooms {
-    position: static;
-    width: 85vw;
-    height: 50vh;
-    margin: 15vh auto 0;
-    align-items: center;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: center;
-    color: white;
+  position: static;
+  width: 85vw;
+  height: 50vh;
+  margin: 15vh auto 0;
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  color: white;
 }
 
 .rooms::after {
-    content: 'Вход';
-    text-align: center;
-    padding: 20px;
-    margin: 10px auto 0;
-    width: 80px;
-    height: 10px;
-    background-color: grey;
-    border: 1px solid black;
-    box-shadow: 0 4px 5px black;
+  content: 'Вход';
+  text-align: center;
+  padding: 20px;
+  margin: 10px auto 0;
+  width: 80px;
+  height: 10px;
+  background-color: grey;
+  border: 1px solid black;
+  box-shadow: 0 4px 5px black;
 }
 
 .big-computer-room {
-    flex-direction: row;
-    width: 8.2vw;
-    height: 8vw;
-    border: black dashed 1px;
-    margin: 0.2%;
-    line-height: 8vw;
+  flex-direction: row;
+  width: 8.2vw;
+  height: 8vw;
+  border: black dashed 1px;
+  margin: 0.2%;
+  line-height: 8vw;
 }
 
 .lecture-room {
-    flex-direction: row;
-    width: 12.4vw;
-    height: 8vw;
-    border: black dashed 1px;
-    margin: 0.2%;
-    line-height: 8vw;
+  flex-direction: row;
+  width: 12.4vw;
+  height: 8vw;
+  border: black dashed 1px;
+  margin: 0.2%;
+  line-height: 8vw;
 }
 
-
-.small-computer-room, .seminar-room {
-    flex-direction: row;
-    width: 4vw;
-    height: 8vw;
-    border: black dashed 1px;
-    margin: 0.2%;
-    line-height: 8vw;
+.lecturer-room {
+  flex-direction: row;
+  width: 4vw;
+  height: 8vw;
+  border: black dashed 1px;
+  margin: 0.2%;
+  line-height: 8vw;
 }
 
-.big-computer-room:hover, .small-computer-room:hover, .seminar-room:hover, .lecture-room:hover {
-    cursor: pointer!important;
+.small-computer-room,
+.seminar-room {
+  flex-direction: row;
+  width: 4vw;
+  height: 8vw;
+  border: black dashed 1px;
+  margin: 0.2%;
+  line-height: 8vw;
+}
+
+.big-computer-room:hover,
+.small-computer-room:hover,
+.seminar-room:hover,
+.lecture-room:hover {
+  cursor: pointer !important;
 }
 
 .stairs {
-    flex-direction: row;
-    width: 4vw;
-    height: 8vw;
-    background-image: url("../img/stars.png");
-    background-repeat: no-repeat;
-    background-size: 100%;
-    background-position: center;
-    margin: 0.2%;
+  flex-direction: row;
+  width: 4vw;
+  height: 8vw;
+  background-image: url('../img/stars.png');
+  background-repeat: no-repeat;
+  background-size: 100%;
+  background-position: center;
+  margin: 0.2%;
 }
 
 .not-available {
-    background-image: url("../img/not-available-room.png");
-    background-repeat: no-repeat;
-    background-size: 100%;
-    background-position: center;
-    flex-direction: row;
-    width: 4vw;
-    height: 8vw;
-    border: gray solid 1px;
-    background-color: gray;
-    margin: 0.2%;
-
+  background-image: url('../img/not-available-room.png');
+  background-repeat: no-repeat;
+  background-size: 100%;
+  background-position: center;
+  flex-direction: row;
+  width: 4vw;
+  height: 8vw;
+  border: gray solid 1px;
+  background-color: gray;
+  margin: 0.2%;
 }
 
 .wc {
-    background-position: center;
-    flex-direction: row;
-    width: 4vw;
-    height: 8vw;
-    border: gray solid 1px;
-    background-color: gray;
-    margin: 0.2%;
-    line-height: 8vw;
+  background-position: center;
+  flex-direction: row;
+  width: 4vw;
+  height: 8vw;
+  border: gray solid 1px;
+  background-color: gray;
+  margin: 0.2%;
+  line-height: 8vw;
 }
 
 .empty-room {
-    background-color: #2db334;
-    box-shadow: 0 0 10px rgb(0, 83, 0), 0 0 5px green;
+  background-color: #2db334;
+  box-shadow: 0 0 10px rgb(0, 83, 0), 0 0 5px green;
+}
+
+.lecturer-room-color {
+  background-color: orange;
+  box-shadow: 0 0 10px rgb(209, 108, 13), 0 0 5px green;
 }
 
 .taken-room {
-    background-color: rgb(182, 11, 11);
-    box-shadow: 0 0 10px red, 0 0 5px red;
+  background-color: rgb(182, 11, 11);
+  box-shadow: 0 0 10px red, 0 0 5px red;
 }
 
 #pop-up-room-img {
-    background-repeat: no-repeat;
-    background-size: 100%;
-    background-position: center;
-    width: 48vw;
-    height: 48vw;
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: 10;
-    margin: 0 25vw 0 25vw;
+  background-repeat: no-repeat;
+  background-size: 100%;
+  background-position: center;
+  width: 48vw;
+  height: 48vw;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  margin: 0 25vw 0 25vw;
 }
 #pop-up-room-img-title {
-    margin: 20% -20%;
-    color: black;
-    font-size: 2vw;
+  margin: 17% -20%;
+  color: black;
+  font-size: 2vw;
 }
 #pop-up-room-img-side-text {
-    width: 25%;
-    height: 30%;
-    margin-left: 70%;
-    color: black;
-    font-size: 1.2vw;
-    word-wrap: break-word;
-
+  width: 30%;
+  height: 30%;
+  margin-left: 64%;
+  color: black;
+  font-size: 1.2vw;
+  word-wrap: break-word;
 }
 
 .darker {
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 5;
-    opacity: 0.75;
-    background-color: black;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 5;
+  opacity: 0.75;
+  background-color: black;
 }
 
 #x {
-    font-size: 2em;
-    z-index: 15;
-    color:white;
-    position: absolute;
-    right: 1vw;
-    top: 1vw;
-    cursor: pointer;
+  font-size: 2em;
+  z-index: 15;
+  color: white;
+  position: absolute;
+  right: 1vw;
+  top: 1vw;
+  cursor: pointer;
 }
 
 .hidden {
-    display: none;
+  display: none;
 }
 
 .breakFlex {
-    flex-basis: 100%;
-    height: 0;
+  flex-basis: 100%;
+  height: 0;
 }
 
 #formBackground {
-    width: 40vw;
-    height: 55vh;
-    margin: 12% 27%;
-    padding: 2%;
-    position: absolute;
-    top: 0;
-    left: 0;
-    background-image: url("../img/background2.jpg");
-    background-position: bottom;
-    background-attachment: fixed;
-    background-size: cover;
-    border-radius: 20%;
-    z-index: 10;
+  width: 40vw;
+  height: 60vh;
+  margin: 12% 27%;
+  padding: 2%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-image: url('../img/background2.jpg');
+  background-position: bottom;
+  background-attachment: fixed;
+  background-size: cover;
+  border-radius: 20%;
+  z-index: 10;
 }
+
 #saveRoom {
-    width: 40vw;
-    height: 55vh;
-    margin: 12% 27%;
-    padding: 2%;
-    position: absolute;
-    top: 0;
-    left: 0;
-    display: inline-block;
-    box-shadow: 0 0 1rem 0 rgba(0, 0, 0, .2);
-    border-radius: 20%;
-    background-color:rgb(255, 255, 255, 0.2);
-    z-index: 10;
-    
+  width: 40vw;
+  height: 60vh;
+  margin: 12% 27%;
+  padding: 2%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: inline-block;
+  box-shadow: 0 0 1rem 0 rgba(0, 0, 0, 0.2);
+  border-radius: 20%;
+  background-color: rgb(255, 255, 255, 0.2);
+  z-index: 10;
 }
 
 #saveRoom::before {
-    content: "";
-    position: absolute;
-    background: initial;
-    z-index: -1;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    opacity: 0.7;
-    box-shadow: inset 0 0 2000px rgba(255, 255, 255, 0.692);
-    -webkit-backdrop-filter: blur(15px);
-    backdrop-filter: blur(15px);
-    border-radius: 20%;
+  content: '';
+  position: absolute;
+  background: initial;
+  z-index: -1;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  opacity: 0.7;
+  box-shadow: inset 0 0 2000px rgba(255, 255, 255, 0.692);
+  -webkit-backdrop-filter: blur(15px);
+  backdrop-filter: blur(15px);
+  border-radius: 20%;
 }
 
-
 #formButtons {
-    top: 87%;
-    left: 33%;
-    position: absolute;
+  top: 87%;
+  left: 33%;
+  position: absolute;
 }
 
 .inputContainer > * {
-    margin: 1.8vh 2vw;
+  margin: 1.8vh 2vw;
 }
 
 .biggerTitle {
-    font-size: 2vw;
+  font-size: 2vw;
 }
 
 input {
-    border: none;
-    box-shadow: 0 0 5px mistyrose;
+  border: none;
+  box-shadow: 0 0 5px mistyrose;
 }
 
 #saveFromRoom {
-    
-    font-size: 2em;
-    z-index: 15;
-    color:white;
-    left: 45%;
-    bottom: 7%;
-    position: absolute;
-    cursor: pointer;
-    text-shadow: 0 0 15px mistyrose, 0 0 15px mistyrose, 0 0 15px mistyrose, 0 0 15px mistyrose;
+  font-size: 2em;
+  z-index: 15;
+  color: white;
+  left: 45%;
+  bottom: 7%;
+  position: absolute;
+  cursor: pointer;
+  text-shadow: 0 0 15px mistyrose, 0 0 15px mistyrose, 0 0 15px mistyrose,
+    0 0 15px mistyrose;
 }
 
 .big-computer-room:hover {
-    width: 8.6vw;
-    height: 8.4vw;
+  width: 8.6vw;
+  height: 8.4vw;
 }
 
 .lecture-room:hover {
-    width: 12.8vw;
-    height: 8.4vw;
+  width: 12.8vw;
+  height: 8.4vw;
 }
 
-
-.small-computer-room:hover,.seminar-room:hover {
-    width: 4.4vw;
-    height: 8.4vw;
+.small-computer-room:hover,
+.seminar-room:hover,
+.lecturer-room:hover {
+  width: 4.4vw;
+  height: 8.4vw;
 }
 
 .warning {
-    color: red;
-    width: 55%;
-    height: 25%;
-    position: absolute;
-    z-index: 15;
-    font-size: 2vw;
-    left: 22.5%;
-    bottom: 40%;
-    text-shadow: 0 0 15px black;
-    line-height: 8vw;
+  color: red;
+  width: 55%;
+  height: 25%;
+  position: absolute;
+  z-index: 15;
+  font-size: 2vw;
+  left: 22.5%;
+  bottom: 40%;
+  text-shadow: 0 0 15px black;
+  line-height: 8vw;
 }
 .warning::before {
-    content: "";
-    position: absolute;
-    background: initial;
-    z-index: -1;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    opacity: 0.7;
-    box-shadow: inset 0 0 2000px rgb(0, 0, 0),inset 0 0 200px rgb(0, 0, 0),inset 0 0 2000px rgb(0, 0, 0),inset 0 0 2000px rgb(0, 0, 0);
-    -webkit-backdrop-filter: blur(15px);
-    backdrop-filter: blur(15px);
-    border-radius: 20%;
+  content: '';
+  position: absolute;
+  background: initial;
+  z-index: -1;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  opacity: 0.7;
+  box-shadow: inset 0 0 2000px rgb(0, 0, 0), inset 0 0 200px rgb(0, 0, 0),
+    inset 0 0 2000px rgb(0, 0, 0), inset 0 0 2000px rgb(0, 0, 0);
+  -webkit-backdrop-filter: blur(15px);
+  backdrop-filter: blur(15px);
+  border-radius: 20%;
 }
 
 #ok {
-    color: white;
-    position: absolute;
-    bottom: 2%;
-    left: 48%;
-    text-shadow: 0 0 15px mistyrose;
+  color: white;
+  position: absolute;
+  bottom: 2%;
+  left: 48%;
+  text-shadow: 0 0 15px mistyrose;
 }
 
 #saveForm {
-    background: none!important;
-    height: 60px;
-    width: 170px;
-    border: none;
-    box-shadow: none;
-    text-decoration: none;
+  background: none !important;
+  height: 60px;
+  width: 170px;
+  border: none;
+  box-shadow: none;
+  text-decoration: none;
+}
+
+/* added styles */
+
+.teacher-info {
+  width: 25%;
+  margin-left: 64%;
+  color: black;
+  font-size: 1.2vw;
+  word-wrap: break-word;
 }

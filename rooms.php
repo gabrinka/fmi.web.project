@@ -1,5 +1,7 @@
 <?php
   include 'db.php';
+ // include 'add_building.php';
+  
 
   $connection = db_connect();
 
@@ -87,6 +89,10 @@
                   else if (roomType == '1') {
                       child.className = 'small-computer-room';
                   }
+                  else if (roomType == '4'){
+                      child.className = 'lecturer-room';
+                  
+                  }
               }
               div.appendChild(child);
           }
@@ -110,8 +116,15 @@
             curFloor[i].classList.add('taken-room');
           }
           else {
+          let roomType = roomTypes[room].type;
+           if(roomType=='4'){
+              curFloor[i].classList.remove('taken-room');
+              curFloor[i].classList.add('lecturer-room-color');
+           }
+           else{
             curFloor[i].classList.remove('taken-room');
             curFloor[i].classList.add('empty-room');
+           }
           }
       }
   }
@@ -189,10 +202,18 @@
           roomType = 'Семинарна зала';
           popUpRoomImg.style.backgroundImage = 'url("./img/seminar-room.png")';
       }
+      else if (elem.classList.contains('lecturer-room')){
+        roomType = 'Преподавателска стая';
+           popUpRoomImg.style.backgroundImage = 'url("./img/lecturer.png")';
+           
+      }
 
       let whiteBoard = (roomObj.whiteBoard == 'д') ? 'Да' : 'Не';
 
       title.innerHTML = `Зала ${elem.innerHTML}`;
+
+
+
 
       let hours =  document.getElementById('timeInput').value;
       let day = document.getElementById('dateInput').value;
@@ -274,7 +295,7 @@
     let day = document.getElementById('dateInput').value;
     date =  day + ' ' + hours.substring(0, 3) + '00:00';
 
-    if(availableData[date] == null || vailableData[date][building] == null || availableData[date][building][floorNum] == null) {
+    if(availableData[date] == null || availableData[date][building] == null || availableData[date][building][floorNum] == null) {
       availableRooms = null;
     } else {
       availableRooms = availableData[date][building][floorNum];
@@ -316,6 +337,10 @@
       formContainer.classList.remove('hidden');
     });
 
+ 
+
+
+
     let saveFromRoom = document.getElementById('saveFromRoom');
     saveFromRoom.addEventListener('click', function (event) {
       document.getElementById('pop-up-room').classList.add('hidden');
@@ -331,6 +356,9 @@
 
       formContainer.classList.remove('hidden');
     });
+
+    // let exitFromRoom = document.getElementByID('exitFromRoom');
+    // exitFromRoom.addEventListener('click', closeCloseUp);
 
     let formContainer = document.getElementById('formContainer');
       let warning = document.createElement('div');
