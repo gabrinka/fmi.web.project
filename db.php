@@ -60,10 +60,10 @@
 		return $result;
 	}
 
-	function getUser($connection, $userName) {
-		$sql = 'SELECT id FROM users WHERE username = ?';
+	function getUserByAttribute($connection,$attributeName, $attributeValue) {
+		$sql = "SELECT id FROM users WHERE {$attributeName} = ?";
 		$query = $connection->prepare($sql);
-		$query->execute(array($userName));
+		$query->execute(array($attributeValue));
 
 		$result = false;
 		$result = $query->fetchAll(PDO::FETCH_ASSOC);
@@ -83,10 +83,10 @@
 		return $result;
 	}
 
-	function insertUser($connection, $userName,$hashedPassword) {
-		$sql = 'INSERT INTO users (username, password) VALUES (?, ?)';
+	function insertUser($connection, $userName,$userType,$fn,$hashedPassword) {
+		$sql = 'INSERT INTO users (username,userType,fn, password) VALUES (?, ?, ?, ?)';
 		$query = $connection->prepare($sql);
-		$query->execute(array($userName,$hashedPassword));
+		$query->execute(array($userName,$userType,$fn,$hashedPassword));
 
 		$result = false;
 		$result = $query->fetchAll(PDO::FETCH_ASSOC);
