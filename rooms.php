@@ -288,7 +288,7 @@
     let day = document.getElementById('dateInput').value;
     date =  day + ' ' + hours.substring(0, 3) + '00:00';
 
-    if(availableData[date] == null || vailableData[date][building] == null || availableData[date][building][floorNum] == null) {
+    if(availableData[date] == null || availableData[date][building] == null || availableData[date][building][floorNum] == null) {
       availableRooms = null;
     } else {
       availableRooms = availableData[date][building][floorNum];
