@@ -409,7 +409,7 @@ button {
 
 #formBackground {
   width: 40vw;
-  height: 55vh;
+  height: 60vh;
   margin: 12% 27%;
   padding: 2%;
   position: absolute;
@@ -422,9 +422,10 @@ button {
   border-radius: 20%;
   z-index: 10;
 }
+
 #saveRoom {
   width: 40vw;
-  height: 55vh;
+  height: 60vh;
   margin: 12% 27%;
   padding: 2%;
   position: absolute;

@@ -82,38 +82,43 @@ include('rooms.php');
             <div class="darker"></div>
             <div id="formBackground"></div>
             <form id="saveRoom" method=post name="saveRoom" action="room.php">
+                <ul style="list-style: none;">
                 <div class="coolLabel biggerTitle">Запази стая:</div>
-                <div class="inputContainer">
-                    <input id="building" type="text" name="building" placeholder="Сграда">
-                    <input id="floor" type="text" name="floor" placeholder="Етаж">
-                    <input id="room" type="text" name="room" placeholder="Стая">
-                </div>
-                <div class="inputContainer">
-                    <input id="saveDate" type="date" name="day">
-                    <input id="saveTime" type="time" name="time">
-                </div>
-                <div class="inputContainer">
-                    <input id="duration" type="number" name="duration" placeholder="Продължителност">
-                </div>
-                <div class="inputContainer">
-                    <input id="lecturerName" type="text" name="lecturerName" placeholder="Преподавател">
-                    <input id="subjectTitle" type="text" name="subjectTitle" placeholder="Предмет">
-                    <select id="courseType" type="text" name="courseType">
+                
+                <select id="building" type="text" name="building"></li>
+                        <option value="ФМИ">ФМИ</option>
+                        <option value="ФзФ">ФзФ</option>
+                        <option value="ФХФ">ФХФ</option>
+                    </select>
+                <li><input id="floor" type="number" name="floor" placeholder="Етаж"></li>
+                <li><input id="room" type="text" name="room" placeholder="Стая"></li>
+               
+                
+                <input id="saveDate" type="date" name="day">
+                <input id="saveTime" type="number"  min="7" max="20" name="time" placeholder="Начален час">
+                
+                
+                <input id="duration" type="number" name="duration" placeholder="Продължителност">                
+                
+                <li><input id="lecturerName" type="text" name="lecturerName" placeholder="Преподавател"></li>
+                <li><input id="subjectTitle" type="text" name="subjectTitle" placeholder="Предмет"></li>
+                <li><select id="courseType" type="text" name="courseType"></li>
                         <option value="с">семинар</option>
                         <option value="л">лекция</option>
                         <option value="п">практикум</option>
-                    </select>
-                </div>
-                <div class="inputContainer">
-                    <input id="speciality" type="text" name="speciality" placeholder="Специалност">
-                    <input id="year" type="text" name="year" placeholder="Курс">
-                    <input id="groupAdm" type="text" name="groupAdm" placeholder="Група">
+                    </select></li>
+                
+                
+                    <li><input id="speciality" type="text" name="speciality" placeholder="Специалност"></li>
+                    <input id="year" type="number"  min="1" max="4" name="year" placeholder="Курс">
+                    <input id="groupAdm" type="number"  min="1" max="8" name="groupAdm" placeholder="Група">
 
-                </div>
+                
                 <div id="formButtons">
-                    <div id="saveForm" class="coolButton selectedButton">Запази зала</div>
+                    <input id="saveForm" type="submit" class="coolButton selectedButton"  value="Запази зала">
                     <div id="closeForm" class="coolButton selectedButton">Отказ</div>
                 </div>
+                </ul>
             </form>
         </div>
         
