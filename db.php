@@ -6,7 +6,7 @@
 		$dbport = 3306;
 		$dbName = "fmifloor_v2";
 		$username = "root";
-		$password = "";
+		$password = "root";
 		
 		// Create connection
 		$connection = new PDO("mysql:host=$dbhost;dbname=$dbName;port=$dbport", $username, $password,

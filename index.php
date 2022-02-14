@@ -63,7 +63,9 @@ include('rooms.php');
             <div id="openForm" class="coolButton selectedButton">Запази зала</div>
 
             <!-- adding building -->
-            <div id='saveBuilding' class = coolButton selectedButton "> Добави сграда</div>
+
+            <a class = "coolButton selectedButton " href = "add_building.php">Добави сграда</a>
+            <a class = "coolButton selectedButton " href = "add_room.php">Добави стая</a>
         </nav>
         <figure id="map">
         </figure>

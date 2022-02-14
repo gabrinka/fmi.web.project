@@ -33,7 +33,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <label>Етажи</label>
         <input type="text" placeholder="Въведете етажи" name="floors" id="floors" required>
         
+        <a href="index.php">  
         <button id="submit" type="submit">Регистрация</button>
+        </a>
+       
        
     </form>
     </body>
