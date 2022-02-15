@@ -14,7 +14,7 @@ $connection = db_connect();
     $conflict = false;
     for($i = $hour; $i < $end; $i++)
     {
-        $checkAvailable = "SELECT 1 FROM roomtaken WHERE DATE(date) = \"$day\" AND HOUR(date) <= $i AND HOUR(date)+duration > $i AND room = $room";
+        $checkAvailable = "SELECT 1 FROM `roomTaken` WHERE DATE(date) = \"$day\" AND HOUR(date) <= $i AND HOUR(date)+duration > $i AND room = $room";
         $availableRooms = get($connection, $checkAvailable);
         $size = sizeof($availableRooms);
         if ($size > 0)
@@ -23,7 +23,9 @@ $connection = db_connect();
         }
     }
     if (!$conflict) {
+
         $insertStatement = "INSERT INTO `roomTaken` VALUES (:b, :r, :f, :t, :ty, :l, :s, :ol, :g, :y, :date, :d)";
+
         $query = $connection->prepare($insertStatement);
         $query->execute(['b' => $_POST['building'], 'r' => $_POST['room'],'f' => $_POST['floor'], 't' => $_POST['subjectTitle'],
                         'ty' => $_POST['courseType'], 'l' => $_POST['lecturerName'], 's' => $_POST['speciality'],
