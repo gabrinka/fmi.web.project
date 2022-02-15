@@ -13,7 +13,7 @@ require_once "db.php";
 require_once "common.php";
 
 $connection = db_connect();
-$username = $password = "";
+$username = $userType = $password = "";
 
 // Processing form data when form is submitted
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -35,6 +35,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $_SESSION["loggedin"] = true;
         $_SESSION["id"] = $id;
         $_SESSION["username"] = $username;
+        $_SESSION["userType"] = get($connection,"SELECT userType from users WHERE id = {$id}")[0]["userType"];
 
         header("location: index.php");
     } else {

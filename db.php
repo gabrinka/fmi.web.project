@@ -57,6 +57,7 @@
 		$query = $connection->prepare($statement);
 		$query->execute();
 		$result = $query->fetchAll(PDO::FETCH_ASSOC);
+	
 		return $result;
 	}
 
