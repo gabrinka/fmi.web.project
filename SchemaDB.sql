@@ -12,8 +12,8 @@ CREATE TABLE buildings (
 CREATE TABLE users (
     id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
     username VARCHAR(50) NOT NULL UNIQUE,
-	userType CHAR(1) NOT NULL,
-	fn VARCHAR(10),
+	  userType CHAR(1) NOT NULL,
+	  fn VARCHAR(10),
     password VARCHAR(255) NOT NULL,
     created_at DATETIME DEFAULT CURRENT_TIMESTAMP
 );
@@ -226,3 +226,4 @@ INSERT INTO rooms VALUES
   ('ФМИ', '200', 2, 'ДИС', 'л', 'Н. Рибарска', 'КН', 5, 1, '2021-01-11 14:00:00', 3),
   ('ФМИ', '200', 2, 'ДИС', 'л', 'Н. Рибарска', 'КН', 6, 1, '2021-01-11 14:00:00', 3),
   ('ФМИ', '200', 2, 'ДИС', 'л', 'Н. Рибарска', 'КН', 7, 1, '2021-01-11 14:00:00', 3);
+
