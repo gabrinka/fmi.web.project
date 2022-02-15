@@ -23,11 +23,13 @@ $connection = db_connect();
         }
     }
     if (!$conflict) {
-    
-        $insertStatement = "INSERT INTO `roomTaken` VALUES (:b, :r, :f, :t, :ty, :l, :s, :g, :y, :date, :d)";
+
+        $insertStatement = "INSERT INTO `roomTaken` VALUES (:b, :r, :f, :t, :ty, :l, :s, :ol, :g, :y, :date, :d)";
+
         $query = $connection->prepare($insertStatement);
         $query->execute(['b' => $_POST['building'], 'r' => $_POST['room'],'f' => $_POST['floor'], 't' => $_POST['subjectTitle'],
                         'ty' => $_POST['courseType'], 'l' => $_POST['lecturerName'], 's' => $_POST['speciality'],
+                        'ol' => $_POST['online-link'],
                         'g' => $_POST['groupAdm'],'y' => $_POST['year'], 'date' => $tempdate, 'd' => $_POST['duration']]) or die('failed');
     }
     header("location: index.php");

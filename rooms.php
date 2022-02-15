@@ -39,7 +39,7 @@ for ($i = 0; $i < sizeof($buildingsInfo); ++$i) {
 }
 
 //$roomsTaken =  getRoomsTakenDate($connection, date("Y-m-d h:i:s"));
-$statement = "SELECT date, building, room, floor, title, type, lecturer, speciality, groupAdm, year, duration
+$statement = "SELECT date, building, room, floor, title, type, lecturer, speciality,onlineLink, groupAdm, year, duration
       FROM roomTaken";
 $roomsTaken = get($connection, $statement);
 ?>
@@ -211,7 +211,8 @@ $roomsTaken = get($connection, $statement);
       text.innerHTML = `<pre>Тип:\n${roomType}\n\nБрой места: ${roomObj.seatsCnt}\n\nБяла дъска: ${whiteBoard}</pre>`
     } else {
       let temp = availableData[date][building][floorNum][roomNum];
-      text.innerHTML = `<pre>Тип:\n${roomType}\n\nБрой места: ${roomObj.seatsCnt}\n\nБяла дъска: ${whiteBoard}\n\nЗаета\n${temp.title}-${temp.type} ${temp.lecturer}\n${temp.speciality} ${temp.groupAdm} група</pre>`
+
+      text.innerHTML = `<pre>Онлайн-линк:\n${temp.onlineLink}\n\nТип:\n${roomType}\n\nБрой места: ${roomObj.seatsCnt}\n\nБяла дъска: ${whiteBoard}\n\nЗаета\n${temp.title}-${temp.type} ${temp.lecturer}\n${temp.speciality} ${temp.groupAdm} група</pre>`
     }
     popUpRoom.classList.remove('hidden');
   }
@@ -404,6 +405,7 @@ $roomsTaken = get($connection, $statement);
       let subjectTitle = document.getElementById('subjectTitle').value;
       let courseType = document.getElementById('courseType').value;
       let speciality = document.getElementById('speciality').value;
+      let onlineLink = document.getElementById('online-link').value;
       let year = document.getElementById('year').value;
       let groupAdm = document.getElementById('groupAdm').value;
 
@@ -439,6 +441,7 @@ $roomsTaken = get($connection, $statement);
           'groupAdm': groupAdm,
           'lecturer': lecturerName,
           'speciality': speciality,
+          'onlineLink' : onlineLink,
           'title': subjectTitle,
           'type': courseType,
           'year': year
@@ -553,6 +556,7 @@ $roomsTaken = get($connection, $statement);
 
   function getAvailability() {
     let availabilityData = <?php echo json_encode($roomsTaken); ?>;
+ 
     availabilityObj = {};
     for (let i = 0; i < availabilityData.length; ++i) {
       if (availabilityObj[availabilityData[i]['date']] == null) {

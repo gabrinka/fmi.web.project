@@ -112,6 +112,7 @@ include('rooms.php');
                 
                 
                     <li><input id="speciality" type="text" name="speciality" placeholder="Специалност"></li>
+                    <li><input id="online-link" type="text" name="online-link" placeholder="Онлайн линк"></li>
                     <input id="year" type="number"  min="1" max="4" name="year" placeholder="Курс">
                     <input id="groupAdm" type="number"  min="1" max="8" name="groupAdm" placeholder="Група">
 
