@@ -130,7 +130,7 @@ button {
 
 #setTime {
   width: 24%;
-  max-height: 22.5%;
+  max-height: 25.5%;
   border-radius: 25%;
   z-index: 1;
   top: 0;
@@ -196,11 +196,29 @@ button {
   box-shadow: 0 0 15px mistyrose, 0 0 15px mistyrose;
 }
 
+
+
+
+#add-building-link {
+  display: block;
+
+  margin: 2% 8%;
+  width: fit-content;
+  padding: 5px;
+  font-size: 1.5vw;
+  color: white;
+  text-shadow: 0 0 15px mistyrose, 0 0 15px mistyrose, 0 0 15px mistyrose,
+    0 0 15px mistyrose;
+  border: none;
+  box-shadow: 0 0 15px mistyrose, 0 0 15px mistyrose;
+}
+
 #logout-link:link,
 #logout-link:visited {
   color: white;
   text-decoration: none;
 }
+
 
 .glowyBox {
   border: none;
