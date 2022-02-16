@@ -7,28 +7,31 @@ $username = $userType = $fn = $password = $confirm_password = "";
 
 // Processing form data when form is submitted
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        $username = trim($_POST["username"]);
+    $username = trim($_POST["username"]);
 
-        if (count(getUserByAttribute($connection, "username",$username)) > 0) {
-            alert("Такъв потребител вече съществува!", "register.php");
+    if (count(getUserByAttribute($connection, "username", $username)) > 0) {
+        alert("Такъв потребител вече съществува!", "register.php");
+    }
+
+    $userType = $_POST["user-type"];
+
+    if (strcmp($userType, "Студент")) {
+        //check if fn is already existing
+        $userType = 's';
+        $fn = trim($_POST["fn"]);
+        if (count(getUserByAttribute($connection, "fn", $fn)) > 0) {
+            alert("Такъв потребител с факултетен номер вече съществува!", "register.php");
         }
-
-        $userType = $_POST["user-type"];
-
-        if(strcmp($userType,"Студент")){
-            //check if fn is already existing
-            $fn = trim($_POST["fn"]);
-            if (count(getUserByAttribute($connection, "fn",$fn)) > 0) {
-                alert("Такъв потребител вече съществува!", "register.php");
-            }
-        }
+    } else {
+        $userType = 'e';
+    }
 
     // Validate password
     $password = trim($_POST["password"]);
     $password = password_hash($password, PASSWORD_DEFAULT);
 
 
-    insertUser($connection, $username,$userType,$fn, $password);
+    insertUser($connection, $username, $userType, $fn, $password);
 
     $connection = null;
     header("location:login.php");
@@ -37,6 +40,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 <!DOCTYPE html5>
 <html lang="bg">
+
 <head>
     <meta charset="UTF-8">
     <title>Регистрация</title>
@@ -55,7 +59,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <label>Тип потребител</label>
         <select id="user-type" name="user-type" onchange="shouldInputFn(this);">
             <option value="student" id="student">Студент</option>
-            <option value="educator">Преподавател</option>
+            <option value="educator" disabled>Преподавател</option>
         </select>
         <label id="fn-label">Факултетен номер</label>
         <input type="text" placeholder="Факултетен номер" name="fn" id="fn" style="display:block;">
@@ -138,4 +142,5 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     </script>
     <script src="./js/register-login-js.js"></script>
 </body>
+
 </html>
