@@ -109,7 +109,6 @@
 	}
 	function insertFloor($connection,$building,$floor,$rooms){
 		$sql = 'INSERT INTO floormap (building,floor,map) VALUE(?,?,?)';
-		echo $sql;
 		$query = $connection->prepare($sql);
 		$query->execute(array($building,$floor,$rooms));
 	}
