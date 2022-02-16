@@ -8,12 +8,18 @@ $connection = db_connect();
 // Processing form data when form is submitted
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
-   
     $building = trim($_POST["building"]);
     $floor = trim($_POST["floors"]);
     $rooms = trim($_POST["rooms"]);
     insertFloor($connection,$building,$floor,$rooms);
-
+    $roomArray = str_replace("|", " ", $rooms);
+    $roomArray = explode(" ", $roomArray);
+    for ($i = 0; $i < count($roomArray); $i++) {
+        if ($roomArray[$i] != 'x' && $roomArray[$i] != 't' && $roomArray[$i] != 's')
+        {
+            insertRoom($connection, $building, $roomArray[$i], $floor, 1,0,'н','н','н','н');
+        }
+    }
     $connection = null;
     header("location:index.php");
 }
