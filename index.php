@@ -54,9 +54,6 @@ include('rooms.php');
                 <ul style="list-style: none;">
                     <div class="coolLabel biggerTitle">Запази стая:</div>
                     <select id="building" type="text" name="building"></li>
-                        <option value="ФМИ">ФМИ</option>
-                        <option value="ФзФ">ФзФ</option>
-                        <option value="ФХФ">ФХФ</option>
                     </select>
                     <li><input id="floor" type="number" name="floor" placeholder="Етаж"></li>
                     <li><input id="room" type="text" name="room" placeholder="Стая"></li>

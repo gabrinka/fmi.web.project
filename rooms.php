@@ -597,7 +597,6 @@ $roomsTaken = get($connection, $statement);
                 addBuildingButton(building);
                 let floors = buildingsInfo[i].split(':')[1];
                 floors = floors.split(',');
-                //alert(building +':'+ floors);
                 for (let j = 0; j < floors.length; j++) {
                     addFloorButton(building, floors[j]);
                 }
@@ -611,9 +610,14 @@ $roomsTaken = get($connection, $statement);
             const textnode = document.createTextNode(building);
             node.appendChild(textnode);
             document.getElementById("building-nav").appendChild(node);
+
+            const option = document.createElement("option");
+            option.value = building;
+            const textnode1 = document.createTextNode(building);
+            option.appendChild(textnode1);
+            document.getElementById("building").appendChild(option);
         }
         function addFloorButton(building, floor) {
-            //alert(building + " "+ floor);
             const nav = document.createElement("nav");
             nav.className += "sideNavBar hidden";
             nav.id = building + "-nav";
