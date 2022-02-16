@@ -597,7 +597,6 @@ $roomsTaken = get($connection, $statement);
                 addBuildingButton(building);
                 let floors = buildingsInfo[i].split(':')[1];
                 floors = floors.split(',');
-                //alert(building +':'+ floors);
                 for (let j = 0; j < floors.length; j++) {
                     addFloorButton(building, floors[j]);
                 }
