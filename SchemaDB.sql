@@ -63,6 +63,7 @@ CREATE TABLE roomTaken  (
    type CHAR(1) NOT NULL,
    lecturer CHAR(255) NOT NULL,
    speciality VARCHAR(255) NOT NULL,
+   onlineLink VARCHAR(255),
    groupAdm INTEGER NOT NULL,
    year INTEGER NOT NULL,
    date DATETIME NOT NULL,
@@ -90,6 +91,10 @@ ALTER TABLE roomTaken ADD CONSTRAINT FK_roomTaken_studentsGroups FOREIGN KEY(spe
 
 
 -- Insert Data
+INSERT INTO users (username,userType,password)
+VALUES
+('milen','e', '$2y$10$E4627f4UCl4r79J6nelL1uo.7le3BL8gHnjA6.aFI9lEO.zr3262e');
+
 INSERT INTO buildings
   VALUES 
   ('ФМИ', '0,1,2,3,4,5'),
@@ -221,9 +226,9 @@ INSERT INTO rooms VALUES
 
   INSERT INTO roomTaken  
   VALUES
-  ('ФМИ', '302', 3, 'Алгебра', 'с', 'В. Дончев', 'КН', 3, 1, '2021-01-11 13:00:00', 2),
-  ('ФМИ', '306', 3, 'ООП', 'с', 'К. Петрова', 'КН', 6, 1, '2021-01-11 13:00:00', 2),
-  ('ФМИ', '200', 2, 'ДИС', 'л', 'Н. Рибарска', 'КН', 5, 1, '2021-01-11 14:00:00', 3),
-  ('ФМИ', '200', 2, 'ДИС', 'л', 'Н. Рибарска', 'КН', 6, 1, '2021-01-11 14:00:00', 3),
-  ('ФМИ', '200', 2, 'ДИС', 'л', 'Н. Рибарска', 'КН', 7, 1, '2021-01-11 14:00:00', 3);
+  ('ФМИ', '302', 3, 'Алгебра', 'с', 'В. Дончев', 'КН','', 3, 1, '2021-01-11 13:00:00', 2),
+  ('ФМИ', '306', 3, 'ООП', 'с', 'К. Петрова', 'КН','', 6, 1, '2021-01-11 13:00:00', 2),
+  ('ФМИ', '200', 2, 'ДИС', 'л', 'Н. Рибарска', 'КН','', 5, 1, '2021-01-11 14:00:00', 3),
+  ('ФМИ', '200', 2, 'ДИС', 'л', 'Н. Рибарска', 'КН','', 6, 1, '2021-01-11 14:00:00', 3),
+  ('ФМИ', '200', 2, 'ДИС', 'л', 'Н. Рибарска', 'КН','', 7, 1, '2021-01-11 14:00:00', 3);
 

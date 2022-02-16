@@ -12,9 +12,11 @@ $buildingsStatement = "SELECT building, floors
 $buildingsInfo = get($connection, $buildingsStatement);
 
 $buildings = "";
+$dataForButtons = "";
 for ($i = 0; $i < sizeof($buildingsInfo); ++$i) {
   $buildingName = $buildingsInfo[$i]['building'];
   $buildings .= $buildingName . ':';
+  $dataForButtons .= $buildingName . ':' . $buildingsInfo[$i]['floors'] . '|' ;
   $floors = explode(',', $buildingsInfo[$i]['floors']);
   foreach ($floors as $f) {
     $buildings .= $f . '-' . getFloors($connection, $buildingName, $f) . '*';
@@ -38,7 +40,6 @@ for ($i = 0; $i < sizeof($buildingsInfo); ++$i) {
   $rooms .= '_';
 }
 
-//$roomsTaken =  getRoomsTakenDate($connection, date("Y-m-d h:i:s"));
 $statement = "SELECT date, building, room, floor, title, type, lecturer, speciality,onlineLink, groupAdm, year, duration
       FROM roomTaken";
 $roomsTaken = get($connection, $statement);
@@ -52,6 +53,7 @@ $roomsTaken = get($connection, $statement);
   let allRoomData = getRoomData();
   let availableData = getAvailability();
 
+  
 
   function createFloor(floors, roomTypes) {
     let map = document.getElementById('map');
@@ -312,25 +314,33 @@ $roomsTaken = get($connection, $statement);
     x.addEventListener('click', closeCloseUp);
 
 
-    function defineWarning(warning,message) {
-      warning.id = 'warning';
+    function defineWarning(warning, message, warningId) {
+      warning.id = warningId;
       warning.innerHTML = message;
       warning.classList.add('warning');
       let ok = document.createElement('div');
       ok.id = 'ok';
       ok.innerHTML = 'ok';
       warning.appendChild(ok);
+
       ok.addEventListener('click', function() {
-        document.getElementById('warning').classList.add('hidden');
-        document.getElementById('formContainer').classList.add('hidden');
+        document.getElementById(warningId).classList.add('hidden');
+        if (warningId == 'open-form-warning') {
+          document.getElementById('formContainer').classList.add('hidden');
+        }
       });
+
       formContainer = document.getElementById('formContainer');
+      warning.classList.add('hidden');
       formContainer.appendChild(warning);
-      formContainer.classList.remove('hidden');
+      formContainer.classList.add('hidden');
     }
 
     let closeForm = document.getElementById('closeForm');
     closeForm.addEventListener('click', closeFormFunc);
+
+    let openFormWarning = document.createElement('div');
+    defineWarning(openFormWarning, "Студентите не могат да запазват стаи!", 'open-form-warning');
 
     let openForm = document.getElementById('openForm');
     defineOpenForm(openForm);
@@ -341,9 +351,9 @@ $roomsTaken = get($connection, $statement);
         var userType = "<?php echo $_SESSION['userType']; ?>";
 
         if ("s" == userType) {
-          let warning = document.createElement('div');
-          defineWarning(warning,"Студентите не могат да запазват стаи!");
-          
+          openFormWarning.classList.remove('hidden');
+          document.getElementById('formContainer').classList.remove('hidden');
+
         } else {
           formContainer = document.getElementById('formContainer');
           let date = document.getElementById('dateInput').value;
@@ -358,139 +368,109 @@ $roomsTaken = get($connection, $statement);
       });
     }
 
-    let saveFromRoom = document.getElementById('saveFromRoom');
-    saveFromRoom.addEventListener('click', function(event) {
-      document.getElementById('pop-up-room').classList.add('hidden');
-      let formContainer = document.getElementById('formContainer');
-      let date = document.getElementById('dateInput').value;
-      let time = document.getElementById('timeInput').value;
-      document.getElementById('saveDate').value = date;
-      document.getElementById('saveTime').value = time;
-      document.getElementById('building').value = building;
-      document.getElementById('floor').value = floorNum;
-      let roomNum = document.getElementById('pop-up-room-img-title').innerHTML.split(' ')[1];
-      document.getElementById('room').value = roomNum;
-
-      formContainer.classList.remove('hidden');
-    });
-
-    // let exitFromRoom = document.getElementByID('exitFromRoom');
-    // exitFromRoom.addEventListener('click', closeCloseUp);
-
-    let formContainer = document.getElementById('formContainer');
-    let warning = document.createElement('div');
-    warning.id = 'incorrect-data-warning';
-    warning.innerHTML = "Не може да бъде запазена зала с въведените данни!";
-    warning.classList.add('warning');
-    let ok = document.createElement('div');
-    ok.id = 'ok';
-    ok.innerHTML = 'ok';
-    warning.appendChild(ok);
-    ok.addEventListener('click', function() {
-      document.getElementById('warning').classList.add('hidden');
-    });
-    warning.classList.add('hidden');
-    formContainer.appendChild(warning);
+    let saveFormWarning = document.createElement('div');
+    defineWarning(saveFormWarning, "Не може да бъде запазена зала с въведените данни!", 'save-form-warning');
 
     let saveForm = document.getElementById('saveForm');
-    saveForm.addEventListener('click', function(event) {
-      let building = document.getElementById('building').value;
-      let floor = document.getElementById('floor').value;
-      let room = document.getElementById('room').value;
-      let temphour = document.getElementById('saveTime').value.split(':')[0];
-      let tempday = document.getElementById('saveDate').value;
-      let date = tempday + ' ' + temphour + ':00:00';
-      let duration = document.getElementById('duration').value;
-      let lecturerName = document.getElementById('lecturerName').value;
-      let subjectTitle = document.getElementById('subjectTitle').value;
-      let courseType = document.getElementById('courseType').value;
-      let speciality = document.getElementById('speciality').value;
-      let onlineLink = document.getElementById('online-link').value;
-      let year = document.getElementById('year').value;
-      let groupAdm = document.getElementById('groupAdm').value;
+    defineSaveForm(saveForm);
 
-      let rooms = document.getElementById(`${building}-${floorNum}`).childNodes;
-      let free = true;
-      for (elem of rooms) {
-        if (elem.innerHTML == room && elem.classList.contains('taken-room')) {
-          free = false;
-          break;
-        }
-      }
+    function defineSaveForm(saveForm) {
+      saveForm.addEventListener('click', function(event) {
+        let formContainer = document.getElementById('formContainer');
 
+        let building = document.getElementById('building').value;
+        let floor = document.getElementById('floor').value;
+        let room = document.getElementById('room').value;
+        let temphour = document.getElementById('saveTime').value.split(':')[0];
+        let tempday = document.getElementById('saveDate').value;
+        let date = tempday + ' ' + temphour + ':00:00';
+        let duration = document.getElementById('duration').value;
+        let lecturerName = document.getElementById('lecturerName').value;
+        let subjectTitle = document.getElementById('subjectTitle').value;
+        let courseType = document.getElementById('courseType').value;
+        let speciality = document.getElementById('speciality').value;
+        let onlineLink = document.getElementById('online-link').value;
+        let year = document.getElementById('year').value;
+        let groupAdm = document.getElementById('groupAdm').value;
 
-      if (!free || building == '' || floor == '' || room == '' || temphour == '' || date == '' || duration == '' || lecturerName == '' ||
-        subjectTitle == '' || courseType == '' || speciality == '' || year == '' || groupAdm == '') {
-        document.getElementById('incorrect-data-warning').classList.remove('hidden');
-      } else {
-        if (availableData[date] == null) {
-          availableData[date] = {};
-        }
-        if (availableData[date][building] == null) {
-          availableData[date][building] = {};
-        }
-        if (availableData[date][building][floor] == null) {
-          availableData[date][building][floor] = {};
-        }
-        if (availableData[date][building][floor][room] == null) {
-          availableData[date][building][floor][room] = {};
-        }
-
-        availableData[date][building][floor][room] = {
-          'duration': duration,
-          'groupAdm': groupAdm,
-          'lecturer': lecturerName,
-          'speciality': speciality,
-          'onlineLink' : onlineLink,
-          'title': subjectTitle,
-          'type': courseType,
-          'year': year
-        };
-
-        hours = parseInt(temphour);
-        for (let d = 1; d < duration; ++d) {
-          hours = hours >= 24 ? 0 : hours + 1;
-          let temph = tempday + ' ' + addZero(hours) + ':00:00';
-          if (availableData[temph] == null) {
-            availableData[temph] = {};
+        let rooms = document.getElementById(`${building}-${floorNum}`).childNodes;
+        let free = true;
+        for (elem of rooms) {
+          if (elem.innerHTML == room && elem.classList.contains('taken-room')) {
+            free = false;
+            break;
           }
-          if (availableData[temph][building] == null) {
-            availableData[temph][building] = {};
-          }
-          if (availableData[temph][building][floor] == null) {
-            availableData[temph][building][floor] = {};
-          }
-          availableData[temph][building][floor][room] = availableData[date][building][floor][room];
         }
 
-        selectFloor(date);
-        let buttons = document.querySelectorAll(`#${building}-nav > div > .sideNavButton`);
-        buttons.forEach(button => {
-          if (button.innerHTML.split(' ')[1] == floorNum) {
-            button.classList.add('selectedButton');
+        if (!free || building == '' || floor == '' || room == '' || temphour == '' || date == '' || duration == '' || lecturerName == '' ||
+          subjectTitle == '' || courseType == '' || speciality == '' || year == '' || groupAdm == '') {
+
+          saveFormWarning.classList.remove('hidden');
+          document.getElementById('formContainer').classList.remove('hidden');
+
+        } else {
+          if (availableData[date] == null) {
+            availableData[date] = {};
           }
-        })
-        closeFormFunc();
-      }
+          if (availableData[date][building] == null) {
+            availableData[date][building] = {};
+          }
+          if (availableData[date][building][floor] == null) {
+            availableData[date][building][floor] = {};
+          }
+          if (availableData[date][building][floor][room] == null) {
+            availableData[date][building][floor][room] = {};
+          }
 
+          availableData[date][building][floor][room] = {
+            'duration': duration,
+            'groupAdm': groupAdm,
+            'lecturer': lecturerName,
+            'speciality': speciality,
+            'onlineLink': onlineLink,
+            'title': subjectTitle,
+            'type': courseType,
+            'year': year
+          };
 
+          hours = parseInt(temphour);
+          for (let d = 1; d < duration; ++d) {
+            hours = hours >= 24 ? 0 : hours + 1;
+            let temph = tempday + ' ' + addZero(hours) + ':00:00';
+            if (availableData[temph] == null) {
+              availableData[temph] = {};
+            }
+            if (availableData[temph][building] == null) {
+              availableData[temph][building] = {};
+            }
+            if (availableData[temph][building][floor] == null) {
+              availableData[temph][building][floor] = {};
+            }
+            availableData[temph][building][floor][room] = availableData[date][building][floor][room];
+          }
 
+          selectFloor(date);
+          let buttons = document.querySelectorAll(`#${building}-nav > div > .sideNavButton`);
+          buttons.forEach(button => {
+            if (button.innerHTML.split(' ')[1] == floorNum) {
+              button.classList.add('selectedButton');
+            }
+          })
+          closeFormFunc();
+          submitForm();
+        }
+      });
+    };
 
-      let php = `<?php
-                  $insertStatement = "INSERT INTO roomTaken VALUES (:b, :r, :f, :t, :ty, :l, :s, :g, :y, :date, :d)";
-                  if ($_POST) {
-                    $query = $connection->prepare($insertStatement);
-                    $tempdate = $_POST["saveDate"] . ' ' .  $_POST["saveTime"];
-                    $query->execute([
-                      'b' => $_POST['building'], 'r' => $_POST['room'], 'f' => $_POST['floor'], 't' => $_POST['subjectTitle'],
-                      'ty' => $_POST['courseType'], 'l' => $_POST['lecturerName'], 's' => $_POST['speciality'],
-                      'g' => $_POST['groupAdm'], 'y' => $_POST['year'], 'date' => $tempdate, 'd' => $_POST['duration']
-                    ]) or die('failed');
-                  }
-                  ?>`;
+    function submitForm() {
+      var data = new FormData(document.getElementById('saveRoom'));
 
-    })
+      var http = new XMLHttpRequest();
+      http.open("POST", "saveRoom.php", true);
+      http.send(data);
 
+      return false;
+    }
 
     let checkAvailability = document.getElementById('checkAvailability');
     checkAvailability.addEventListener('click', function() {
@@ -556,7 +536,7 @@ $roomsTaken = get($connection, $statement);
 
   function getAvailability() {
     let availabilityData = <?php echo json_encode($roomsTaken); ?>;
- 
+
     availabilityObj = {};
     for (let i = 0; i < availabilityData.length; ++i) {
       if (availabilityObj[availabilityData[i]['date']] == null) {
@@ -607,4 +587,45 @@ $roomsTaken = get($connection, $statement);
     }
     return true;
   }
+
+  function createBuildingFloorButtons() {
+            let buildingsCnt = "<?php echo sizeof($buildingsInfo); ?>"
+            let buildingsInfo = "<?php echo $dataForButtons ?>";
+            buildingsInfo = buildingsInfo.split('|');
+            for (let i = 0; i < buildingsCnt; i++) {
+                let building = buildingsInfo[i].split(':')[0];
+                addBuildingButton(building);
+                let floors = buildingsInfo[i].split(':')[1];
+                floors = floors.split(',');
+                //alert(building +':'+ floors);
+                for (let j = 0; j < floors.length; j++) {
+                    addFloorButton(building, floors[j]);
+                }
+            }
+            setTimeout(function() {document.getElementById("ФМИ-button").click();}, 200);
+        }
+        function addBuildingButton(building) {
+            const node = document.createElement("div");
+            node.className += "topNavButton";
+            node.id = building + "-button";
+            const textnode = document.createTextNode(building);
+            node.appendChild(textnode);
+            document.getElementById("building-nav").appendChild(node);
+        }
+        function addFloorButton(building, floor) {
+            //alert(building + " "+ floor);
+            const nav = document.createElement("nav");
+            nav.className += "sideNavBar hidden";
+            nav.id = building + "-nav";
+            const textnode1 = document.createTextNode("");
+            nav.appendChild(textnode1);
+            document.getElementById("main").appendChild(nav);
+
+            const node = document.createElement("div");
+            node.className += "sideNavButton";
+            node.id = building + "-button";
+            const textnode = document.createTextNode("Етаж " + floor);
+            node.appendChild(textnode);
+            document.getElementById(nav.id).appendChild(node);
+        }
 </script>
