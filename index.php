@@ -33,7 +33,7 @@ include('rooms.php');
             <div id="openForm" class="coolButton selectedButton">Запази зала</div>
             <a class="coolButton selectedButton " href="add_building.php">Добави сграда</a>
             <a class="coolButton selectedButton " href="add_floor.php">Добави карта на етаж</a>
-            <a class="coolButton selectedButton " href="add_room.php">Добави стая</a>
+            <a class="coolButton selectedButton " href="add_room.php">Редактирай зала</a>
         </nav>
         <figure id="map">
         </figure>

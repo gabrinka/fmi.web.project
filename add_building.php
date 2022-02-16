@@ -36,6 +36,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <a href="index.php">  
         <button id="submit" type="submit">Регистрация</button>
         </a>
+		
+		 <button type="back-button" onclick="window.location='index.php';return false;">Отказ</button>
        
        
     </form>

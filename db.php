@@ -118,5 +118,25 @@
 		$query = $connection->prepare($sql);
 		$query->execute(array($building,$room,$floorNumber,$type,$seatsCnt,$computers,$whiteBoard,$projector,$sector));
 	}
+	
+	
+	function editRoom($connection,$building,$room,$floorNumber,$type,$seatsCnt,$computers,$whiteBoard,$projector,$sector){
+		
+		$sql = "UPDATE rooms SET building=?, room=?, floor=?, type=?, seatsCnt=?,computers=?, whiteBoard =?, projector=?, sector=?  WHERE building=? AND room =?";
+		$query= $connection->prepare($sql);
+		$query->execute(array($building, $room, $floorNumber, $type, $seatsCnt,$computers,$whiteBoard,$projector,$sector, $building,$room));
+
+	}
+
+	function selectRoom($connection,$building,$room){
+		$sql =  "SELECT * FROM rooms WHERE building=? AND room =?";
+		$query = $connection->prepare($sql);
+		$query->execute(array($building,$room));
+		
+		$result = false;
+		$result = $query->fetchAll(PDO::FETCH_ASSOC);
+
+		return $result;
+	}
 
 	?>
