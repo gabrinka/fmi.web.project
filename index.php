@@ -20,7 +20,7 @@ include('rooms.php');
     <link rel="stylesheet" href="./css/style.css">
 </head>
 
-<body onload="appendBuilding()">
+<body>
     <nav id="building-nav" class="topNavBar">
     </nav>
     <main id="main">
