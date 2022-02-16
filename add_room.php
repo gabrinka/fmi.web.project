@@ -36,7 +36,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <html lang="bg">
 <head>
     <meta charset="UTF-8">
-    <title>Промени стая</title>
+    <title>Редактирай стая</title>
     <link rel="stylesheet" href="./css/style.css">
 </head>
 <body>
