@@ -39,6 +39,16 @@ button {
   cursor: pointer;
 }
 
+.back-button{
+  background-color: #4caf50;
+    width: 100%;
+    color: rgb(252, 249, 245);
+    padding: 15px;
+    margin: 10px 0px;
+    border: none;
+    cursor: pointer;
+}
+
 .topNavBar {
   background: inherit;
   display: inline-block;

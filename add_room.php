@@ -18,8 +18,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $whiteBoard = trim($_POST["whiteBoard"]);
     $projector = trim($_POST["projector"]);
     $sector = trim($_POST["sector"]);
-    insertRoom($connection,$building,$room,$floor,$type,$seatsCnt,$computers,$whiteBoard,$projector,$sector);
 
+  
+    if (count(selectRoom($connection, $building, $room)) == 0) 
+    {
+        insertRoom($connection,$building,$room,$floor,$type,$seatsCnt,$computers,$whiteBoard,$projector,$sector);
+    }
+    else{
+        editRoom($connection,$building,$room,$floor,$type,$seatsCnt,$computers,$whiteBoard,$projector,$sector);
+    }
     $connection = null;
     header("location:index.php");
 }
@@ -29,12 +36,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <html lang="bg">
 <head>
     <meta charset="UTF-8">
-    <title>Регистрация но нова стая</title>
+    <title>Редактирай стая</title>
     <link rel="stylesheet" href="./css/style.css">
 </head>
 <body>
 <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
-        <h2>Регистрация на нова стая</h2>
+        <h2> Редактирай стая </h2>
+        <h3> Забележка: Ако стаята не съществува ще се създаде нова, ако вече съществува ще се редактира! </h3>
         <label>Сграда </label>
         <input type="text" placeholder="Въведете име на сграда" name="building" id="username" required>
         <label>Номер на стая</label>
@@ -54,8 +62,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <input type="text" placeholder="д/н" name="projector" id="projector" required>
         <label>Сектор</label>
         <input type="text" placeholder="д/л/ц" name="sector" id="sector" required>
-        <button id="submit" type="submit">Регистране на нова стая</button>
+        <button id="submit" type="submit">Редактирай зала</button>
+        <button type="back-button" onclick="window.location='index.php';return false;">Отказ</button>
        
     </form>
+    
     </body>
 </html>
